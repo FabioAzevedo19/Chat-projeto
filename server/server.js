@@ -14,6 +14,17 @@ app.use(express.static(caminhopublico));
 io.on('connection', (socket) => {
     console.log('Novo utilizador conectado');
 
+    socket.emit('novaMensagem', {
+        de: 'Admin',
+        texto: 'Bem vindo a sala de chat'
+    });
+
+    socket.broadcast.emit('novaMensagem', {
+        de: 'Admin',
+        texto: 'Novo utilizador entrou na sala',
+        enviadaa: new Date().getTime()
+    });
+
     socket.on('criarMensagem', (mensagem) => {
         console.log(mensagem);
         io.emit('novaMensagem', {
