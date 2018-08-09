@@ -14,6 +14,15 @@ app.use(express.static(caminhopublico));
 io.on('connection', (socket) => {
     console.log('Novo utilizador conectado');
 
+    socket.on('criarMensagem', (mensagem) => {
+        console.log(mensagem);
+        io.emit('novaMensagem', {
+            de: mensagem.de,
+            texto: mensagem.texto,
+            enviadaa: new Date().getTime()
+        })
+    });
+
     socket.on('disconnect', () => {
         console.log('Utilizador desconectado');
     });
