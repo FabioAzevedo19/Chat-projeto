@@ -8,5 +8,5 @@ const app = express();
 app.use(express.static(caminhopublico));
 
 app.listen(port, () => {
-    console.log('Node a ouvir a porta 3000');
+    console.log(`Server a ouvir a porta ${port}`);
 });
