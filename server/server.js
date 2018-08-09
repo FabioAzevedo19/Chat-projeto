@@ -7,6 +7,9 @@ const app = express();
 
 app.use(express.static(caminhopublico));
 
+app.get('/', (req, res) => {
+    res.send(index.html);
+});
 app.listen(port, () => {
     console.log(`Server a ouvir a porta ${port}`);
 });
